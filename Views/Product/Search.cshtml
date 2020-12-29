@@ -1,0 +1,28 @@
+﻿@model List<Product>
+@inject ProductDBContext DbContext
+@{
+    var ListCategory = DbContext.Categories.ToList();
+    int i = 1;
+}
+<div class="row justify-content-center">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 look product text-center" style="margin-top: 40px; margin-bottom:20px ">
+
+            <a asp-controller="Product" asp-action="ShowOne" asp-route-id="@item.ProductId" class="product-image" data-image="@item.Avata">
+                <img class="img-responsive" src="~/images/@item.Avata"
+                     style="height:250px;width:250px" alt="">
+            </a>
+            <p class="product-name" data-name="@item.NameProduct"> @item.NameProduct</p>
+            <p class="product-price" data-price="@item.Price">Giá : @item.Price</p>
+            <p hidden>@ListCategory.Find(c => c.CategoryId == item.CategoryId)</p>
+
+
+        </div>
+        <input type="hidden" value="@i++" />
+        if (i == 4)
+        {
+            <br>
+        }
+    }
+</div>

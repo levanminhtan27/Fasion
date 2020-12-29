@@ -1,0 +1,71 @@
+﻿@model Product
+@{
+    ViewBag.Title = "Show Product";
+    var imagePath = $"/images/{(Model.Avata ?? "none-avatar.png")}";
+}
+<h2 class="text-center input_margin" style="margin-top: 40px">@Model.NameProduct</h2>
+<div class="row  ">
+    <div class="col-md-4 col-12" style="margin-top:10px">
+        <div class="card">
+            <div class="card-img-bottom text-xl-center">
+                <img src="@imagePath" class="m-2" style="width: 300px; height: 350px; margin-bottom:20px" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5" style="margin-top:10px">
+        <div class="card">
+            <div class="card-body">
+
+                <p>
+                    <b>Mô tả về sản phẩm:</b>
+                    @Model.Description
+                </p>
+                <p>
+                    <b>Giá:</b>
+                    @Model.Price.ToString("N0")đ
+                </p>
+            </div>
+            <div class="input_margin">
+                <b>Số Lượng</b>
+                <input type="number" name="Số Lượng " value="1" id="@Model.ProductId" />
+            </div>
+            <div class="card-footer text-center margin-button">
+                <a class="btn btn-warning" href="javascript:void(0)" onclick="CustomerCart.AddItem(@Model.ProductId)">
+                    Thêm vào giỏ hàng
+                </a>
+                <a asp-controller="Product" asp-action="ShowUser" asp-route-id="@Model.CategoryId" class="btn btn-warning">Trở về</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+<!-- //breadcrumbs -->
+@*<div class="products">
+        <div class="container">
+            <div class="row agileinfo_single">
+                <div class="col-md-4 agileinfo_single_left">
+                    <img id="example" src="@imagePath" class="img-responsive">
+                </div>
+
+
+                <div class="col-md-8 agileinfo_single_right">
+                    <h2>@Model.NameProduct</h2>
+                    <div class="w3agile_description">
+                        <h4>Description :</h4>
+                        <p>
+                            @Model.Description
+                        </p>
+                    </div>
+                    <div class="snipcart-item block">
+                        <div class="snipcart-thumb agileinfo_single_right_snipcart">
+                            <h4 class="m-sing">Price :  @Model.Price</h4>
+                        </div>
+
+                        <a asp-controller="Product" asp-action="Show" class="btn btn-warning">Home</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>*@

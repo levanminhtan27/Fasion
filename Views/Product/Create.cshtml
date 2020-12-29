@@ -1,0 +1,68 @@
+﻿@model MVC_Fashion.ViewModel.ProductViewModel
+@inject ProductDBContext Dbcontext
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+    <h2>Create Product</h2>
+
+<hr />
+<div class="row text-alcenter">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="NameProduct" class="control-label"></label>
+                <input asp-for="NameProduct" class="form-control" />
+                <span asp-validation-for="NameProduct" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddDescription" class="control-label"></label>
+                <input asp-for="AddDescription" class="form-control" />
+                <span asp-validation-for="AddDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategotyId" class="control-label">Category </label>
+                <select asp-for="CategotyId" class="form-control inline-block form-inline"
+                        asp-items="@(new SelectList(Dbcontext.Categories.ToList(), "CategoryId","Name"))">
+                    <option>--chọn--</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="AvataPast" class="control-label"></label>
+                    <div class="custom-file">
+                        <input asp-for="AvataPast" class="custom-file-input form-control" id="customFile" type="file">
+                        <label class="custom-file-label" for="customFile"></label>
+                    </div>
+                    <span asp-validation-for="AvataPast" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" value="Create" class="btn btn-success">
+                    Create
+                </button>
+                <button asp-controller="Home" asp-action="Index" class="btn btn-success">Back</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+}

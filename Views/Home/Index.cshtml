@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class=" banner-w3">
+    <div class="demo-1">
+        <div id="example1" class="core-slider core-slider__carousel example_1">
+            <div class="core-slider_viewport img-logo">
+                <div class="core-slider_list">
+                    <div class="core-slider_item">
+                        <img src="~/Layout/images/b1.jpg" class="img-responsive" alt="">
+                    </div>
+                    <div class="core-slider_item">
+                        <img src="~/Layout/images/b2.jpg" class="img-responsive" alt="">
+                    </div>
+                    <div class="core-slider_item">
+                        <img src="~/Layout/images/b3.jpg" class="img-responsive" alt="">
+                    </div>
+                    <div class="core-slider_item">
+                        <img src="~/Layout/images/b4.jpg" class="img-responsive" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="core-slider_nav">
+
+@*
+                <div class="core-slider_arrow core-slider_arrow__right">
+                    <span class="carousel-control-prev-icon"></span>
+                </div>
+                <div class="core-slider_arrow core-slider_arrow__left carousel-control-next-icon">
+                    <span class="carousel-control-next-icon"></span>
+                </div>*@
+            </div>
+            <div class="core-slider_control-nav"></div>
+        </div>
+    </div>
+    <link href="~/Layout/css/coreSlider.css" rel="stylesheet" type="text/css">
+    <script src="~/layout/js/coreSlider.js"></script>
+    <script>
+        $('#example1').coreSlider({
+            pauseOnHover: false,
+            interval: 3000,
+            controlNavEnabled: true
+        });
+
+    </script>
+
+</div>
+
+
+<div class="ban-bottom-w3l">
+    <div class="container">
+        <div class="col-md-6 ban-bottom3">
+            <div class="ban-top">
+                <img src="~/Layout/images/cach-phoi-do-dep-cho-nam-1.jpg" class="img-responsive" alt="" />
+            </div>
+            <div class="ban-img">
+                <div class=" ban-bottom1">
+                    <div class="ban-top">
+                        <img src="~/Layout/images/hoangtu-shop-167850.jpg" class="img-responsive" alt="" />
+                    </div>
+                </div>
+                <div class="ban-bottom2">
+                    <div class="ban-top">
+                        <img src="~/Layout/images/20a347102933801203ed7f137ac78ea1.jpg_720x720q80.jpg_.webp" alt="" />
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="col-md-6 ban-bottom">
+            <div class="ban-top">
+                <img src="~/Layout/images/3225a5ee2f23f4da6db6c8a4eb7e107e.jpg_720x720q80.jpg_.webp" class="img-responsive" alt="" />
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>

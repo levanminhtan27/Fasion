@@ -1,0 +1,55 @@
+﻿@model List<Product>
+@inject ProductDBContext DbContext
+@{
+    var ListCategory = DbContext.Categories.ToList();
+    int i = 1;
+}
+
+        <div class="row justify-content-center">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 look product margin-img"  >
+
+                    <a asp-controller="Product" asp-action="ShowOne" asp-route-id="@item.ProductId" class="product-image" data-image="@item.Avata">
+                        <img class="img-responsive font-img" src="~/images/@item.Avata">
+                    </a>
+
+                    <div class="margin text-xl-center">
+                        <a asp-controller="Product" asp-action="ShowOne" asp-route-id="@item.ProductId" class="product-name">
+                            <p data-name="@item.NameProduct">@item.NameProduct</p>
+                        </a>
+
+                        <p class="product-price" data-price="@item.Price"><b>Giá :</b> @item.Price.ToString("N0")đ</p>
+                    </div>
+                    <p hidden>@ListCategory.Find(c => c.CategoryId == item.CategoryId)</p>
+
+
+                </div>
+                <input type="hidden" value="@i++" />
+                if (i == 4)
+                {
+                    <br>
+                }
+            }
+        </div>
+
+
+@*   <div class="col-md-3 look product" style="text-align:center">
+
+                <a asp-controller="Product" asp-action="ShowOne" asp-route-id="@item.ProductId" class="product-image" data-image="@item.Avata">
+                    <img class="img-responsive" src="~/images/@item.Avata"
+                         style="height:150px;width:200px" alt="">
+                </a>
+                <p class="product-name" data-name="@item.NameProduct">Name product : @item.NameProduct</p>
+                <p class="product-price" data-price="@item.Price">Price : @item.Price</p>
+                <p hidden>@ListCategory.Find(c => c.CategoryId == item.CategoryId)</p>
+
+
+            </div>
+            <input type="hidden" value="@i++" />
+            if (i == 12)
+            {
+                <br>
+            }
+        }
+    </div>*@

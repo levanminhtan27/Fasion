@@ -1,0 +1,40 @@
+﻿@model List<EditRole>
+@{  
+    ViewData["Title"] = "Roles list";
+}
+
+<div>
+    <h3 class="display text-center"> VAI TRÒ</h3>
+    <a asp-controller="Role" asp-action="Create" class="btn btn-warning mb-2">Create Role</a>
+    <table id="tbRoles" class="table table-bordered table-hover table-primary">
+        <thead class="thead-dark">
+            <tr>
+                <th>#ID</th>
+                <th>Vai trò</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var role in Model)
+                {
+                    <tr>
+                        <td>@role.RoleId</td>
+                        <td>@role.RoleName</td>
+                        <td>
+                            <a asp-controller="Role" asp-action="Edit" asp-route-id="@role.RoleId" class="text-danger"><i class="fas fa-edit"></i></a>
+                            <a href="javascript:void(0)" class="text-danger" onclick="role.delete('@role.RoleId')"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
+
+@section Scripts{
+    <script src="~/lib/bootbox/bootbox.min.js"></script>
+    <script src="~/js/role.js" asp-append-version="true"></script>
+}
